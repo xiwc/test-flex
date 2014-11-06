@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:local="*"
+			   xmlns:comp="comp.*"
+			   minWidth="955" minHeight="600"
+			   creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import comp.MaskingView;
+			
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var maskingView:MaskingView = new MaskingView();
+				PopUpManager.addPopUp(maskingView, win, false);
+				PopUpManager.centerPopUp(maskingView);
+				PopUpManager.bringToFront(maskingView);
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:CheckBox x="614" y="175" label="CheckBox"/>
+	<s:Button x="618" y="266" label="Button"/>
+	<s:TitleWindow id="win" x="147" y="31" width="385" height="355">
+		<mx:AdvancedDataGrid id="adg1" x="41" y="53" designViewDataType="tree">
+			<mx:columns>
+				<mx:AdvancedDataGridColumn dataField="col1" headerText="Column 1"/>
+				<mx:AdvancedDataGridColumn dataField="col2" headerText="Column 2"/>
+				<mx:AdvancedDataGridColumn dataField="col3" headerText="Column 3"/>
+			</mx:columns>
+		</mx:AdvancedDataGrid>
+	</s:TitleWindow>
+</s:Application>

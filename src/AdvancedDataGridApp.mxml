@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:comp="comp.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<mx:AdvancedDataGrid horizontalScrollPolicy="auto" id="adg1" x="123" y="60" width="505" height="309" designViewDataType="flat" allowMultipleSelection="true" selectionMode="multipleRows">
+		
+		<mx:itemRenderer>
+			<fx:Component>
+				<comp:AdvancedDataGridItemRenderer/>
+			</fx:Component>
+		</mx:itemRenderer>
+		
+		<mx:columns>
+			<mx:AdvancedDataGridColumn width="600" dataField="col1" headerText="Column 1"/>
+			<mx:AdvancedDataGridColumn dataField="col2" headerText="Column 2"/>
+			<mx:AdvancedDataGridColumn dataField="col3" headerText="Column 3"/>
+		</mx:columns>
+		<mx:dataProvider>
+			<s:ArrayCollection>
+				<fx:Object col1="ff1111111111111111111111111111111111111111111" col2="222" col3="333"/>
+				<fx:Object col1="111" col2="222" col3="333"/>
+				<fx:Object col1="111" col2="222" col3="333"/>
+				<fx:Object col1="111" col2="222" col3="333"/>
+				<fx:Object col1="111" col2="222" col3="333"/>
+				<fx:Object col1="111" col2="222" col3="333"/>
+				<fx:Object col1="111" col2="222" col3="333"/>
+			</s:ArrayCollection>
+		</mx:dataProvider>
+	</mx:AdvancedDataGrid>
+</s:Application>

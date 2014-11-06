@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:comp="comp.*"
+		 width="100%" height="100%">
+	<s:layout>
+		<s:VerticalLayout paddingLeft="20" paddingTop="20"/>
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<mx:ToggleButtonBar dataProvider="viewstack"/>
+	<mx:ViewStack id="viewstack" width="100%" selectedIndex="2">
+		<s:NavigatorContent width="100%" height="100%" label="At frequency of...">
+			<s:HGroup paddingBottom="20" paddingLeft="20" paddingTop="20" verticalAlign="middle">
+				<s:Label text="Every"/>
+				<s:DropDownList selectedIndex="0">
+					<s:dataProvider>
+						<s:ArrayCollection>
+							<fx:String>30 minutes</fx:String>
+							<fx:String>1 hour</fx:String>
+							<fx:String>2 hours</fx:String>
+							<fx:String>3 hours</fx:String>
+							<fx:String>4 hours</fx:String>
+							<fx:String>6 hours</fx:String>
+							<fx:String>8 hours</fx:String>
+							<fx:String>12 hours</fx:String>
+							<fx:String>24 hours</fx:String>
+						</s:ArrayCollection>
+					</s:dataProvider>
+				</s:DropDownList>
+				<s:Spacer width="10" height="10"/>
+				<s:Label text="Start at"/>
+				<s:DropDownList width="80" selectedIndex="0">
+					<s:dataProvider>
+						<s:ArrayCollection>
+							<fx:String>0</fx:String>
+							<fx:String>5</fx:String>
+							<fx:String>10</fx:String>
+							<fx:String>15</fx:String>
+							<fx:String>20</fx:String>
+							<fx:String>25</fx:String>
+							<fx:String>30</fx:String>
+							<fx:String>35</fx:String>
+							<fx:String>40</fx:String>
+							<fx:String>45</fx:String>
+							<fx:String>50</fx:String>
+							<fx:String>55</fx:String>
+						</s:ArrayCollection>
+					</s:dataProvider>
+				</s:DropDownList>
+				<s:Label text="minutes after the hour"/>
+			</s:HGroup>
+		</s:NavigatorContent>
+		<s:NavigatorContent width="100%" height="100%" label="Every day at...">
+			<s:HGroup paddingBottom="20" paddingLeft="20" paddingTop="20" verticalAlign="middle">
+				<s:Label text="Run at *"/>
+				<comp:DropDownListEx width="230" labelField="label">
+					<comp:dataProvider>
+						<s:ArrayCollection>
+							<fx:Object name="1 AM" value="1" index="0"/>
+							<fx:Object name="2 AM" value="2" index="1"/>
+							<fx:Object name="3 AM" value="3" index="2"/>
+							<fx:Object name="4 AM" value="4" index="3"/>
+							<fx:Object name="5 AM" value="5" index="4"/>
+							<fx:Object name="6 AM" value="6" index="5"/>
+							<fx:Object name="7 AM" value="7" index="6"/>
+							<fx:Object name="8 AM" value="8" index="7"/>
+							<fx:Object name="9 AM" value="9" index="8"/>
+							<fx:Object name="10 AM" value="10" index="9"/>
+							<fx:Object name="11 AM" value="11" index="10"/>
+							<fx:Object name="12 AM" value="12" index="11"/>
+							<fx:Object name="1 PM" value="13" index="12"/>
+							<fx:Object name="2 PM" value="14" index="13"/>
+							<fx:Object name="3 PM" value="15" index="14"/>
+							<fx:Object name="4 PM" value="16" index="15"/>
+							<fx:Object name="5 PM" value="17" index="16"/>
+							<fx:Object name="6 PM" value="18" index="17"/>
+							<fx:Object name="7 PM" value="19" index="18"/>
+							<fx:Object name="8 PM" value="20" index="19"/>
+							<fx:Object name="9 PM" value="21" index="20"/>
+							<fx:Object name="10 PM" value="22" index="21"/>
+							<fx:Object name="11 PM" value="23" index="22"/>
+						</s:ArrayCollection>
+					</comp:dataProvider>
+				</comp:DropDownListEx>
+				<s:Spacer width="10"/>
+				<s:DropDownList width="80" selectedIndex="0">
+					<s:dataProvider>
+						<s:ArrayCollection>
+							<fx:String>0</fx:String>
+							<fx:String>5</fx:String>
+							<fx:String>10</fx:String>
+							<fx:String>15</fx:String>
+							<fx:String>20</fx:String>
+							<fx:String>25</fx:String>
+							<fx:String>30</fx:String>
+							<fx:String>35</fx:String>
+							<fx:String>40</fx:String>
+							<fx:String>45</fx:String>
+							<fx:String>50</fx:String>
+							<fx:String>55</fx:String>
+						</s:ArrayCollection>
+					</s:dataProvider>
+				</s:DropDownList>
+				<s:Label text="minutes after the hour"/>
+			</s:HGroup>
+		</s:NavigatorContent>
+		<s:NavigatorContent width="100%" height="100%" label="On selected days...">
+			<s:HGroup paddingBottom="20" paddingLeft="20" paddingTop="20" verticalAlign="middle">
+				<s:Label text="Run at"/>
+				<s:DropDownList selectedIndex="0">
+					<s:dataProvider>
+						<s:ArrayCollection>
+							<fx:String>12:00 AM</fx:String>
+							<fx:String>12:15 AM</fx:String>
+							<fx:String>12:30 AM</fx:String>
+							<fx:String>12:45 AM</fx:String>
+							
+							<fx:String>01:00 AM</fx:String>
+							<fx:String>01:15 AM</fx:String>
+							<fx:String>01:30 AM</fx:String>
+							<fx:String>01:45 AM</fx:String>
+							
+							<fx:String>02:00 AM</fx:String>
+							<fx:String>02:15 AM</fx:String>
+							<fx:String>02:30 AM</fx:String>
+							<fx:String>02:45 AM</fx:String>
+							
+							<fx:String>03:00 AM</fx:String>
+							<fx:String>03:15 AM</fx:String>
+							<fx:String>03:30 AM</fx:String>
+							<fx:String>03:45 AM</fx:String>
+							
+							<fx:String>04:00 AM</fx:String>
+							<fx:String>04:15 AM</fx:String>
+							<fx:String>04:30 AM</fx:String>
+							<fx:String>04:45 AM</fx:String>
+							
+							<fx:String>05:00 AM</fx:String>
+							<fx:String>05:15 AM</fx:String>
+							<fx:String>05:30 AM</fx:String>
+							<fx:String>05:45 AM</fx:String>
+							
+							<fx:String>06:00 AM</fx:String>
+							<fx:String>06:15 AM</fx:String>
+							<fx:String>06:30 AM</fx:String>
+							<fx:String>06:45 AM</fx:String>
+							
+							<fx:String>07:00 AM</fx:String>
+							<fx:String>07:15 AM</fx:String>
+							<fx:String>07:30 AM</fx:String>
+							<fx:String>07:45 AM</fx:String>
+							
+							<fx:String>08:00 AM</fx:String>
+							<fx:String>08:15 AM</fx:String>
+							<fx:String>08:30 AM</fx:String>
+							<fx:String>08:45 AM</fx:String>
+							
+							<fx:String>09:00 AM</fx:String>
+							<fx:String>09:15 AM</fx:String>
+							<fx:String>09:30 AM</fx:String>
+							<fx:String>09:45 AM</fx:String>
+							
+							<fx:String>10:00 AM</fx:String>
+							<fx:String>10:15 AM</fx:String>
+							<fx:String>10:30 AM</fx:String>
+							<fx:String>10:45 AM</fx:String>
+							
+							<fx:String>11:00 AM</fx:String>
+							<fx:String>11:15 AM</fx:String>
+							<fx:String>11:30 AM</fx:String>
+							<fx:String>11:45 AM</fx:String>
+							
+							<fx:String>12:00 PM</fx:String>
+							<fx:String>12:15 PM</fx:String>
+							<fx:String>12:30 PM</fx:String>
+							<fx:String>12:45 PM</fx:String>
+							
+							<fx:String>01:00 PM</fx:String>
+							<fx:String>01:15 PM</fx:String>
+							<fx:String>01:30 PM</fx:String>
+							<fx:String>01:45 PM</fx:String>
+							
+							<fx:String>02:00 PM</fx:String>
+							<fx:String>02:15 PM</fx:String>
+							<fx:String>02:30 PM</fx:String>
+							<fx:String>02:45 PM</fx:String>
+							
+							<fx:String>03:00 PM</fx:String>
+							<fx:String>03:15 PM</fx:String>
+							<fx:String>03:30 PM</fx:String>
+							<fx:String>03:45 PM</fx:String>
+							
+							<fx:String>04:00 PM</fx:String>
+							<fx:String>04:15 PM</fx:String>
+							<fx:String>04:30 PM</fx:String>
+							<fx:String>04:45 PM</fx:String>
+							
+							<fx:String>05:00 PM</fx:String>
+							<fx:String>05:15 PM</fx:String>
+							<fx:String>05:30 PM</fx:String>
+							<fx:String>05:45 PM</fx:String>
+							
+							<fx:String>06:00 PM</fx:String>
+							<fx:String>06:15 PM</fx:String>
+							<fx:String>06:30 PM</fx:String>
+							<fx:String>06:45 PM</fx:String>
+							
+							<fx:String>07:00 PM</fx:String>
+							<fx:String>07:15 PM</fx:String>
+							<fx:String>07:30 PM</fx:String>
+							<fx:String>07:45 PM</fx:String>
+							
+							<fx:String>08:00 PM</fx:String>
+							<fx:String>08:15 PM</fx:String>
+							<fx:String>08:30 PM</fx:String>
+							<fx:String>08:45 PM</fx:String>
+							
+							<fx:String>09:00 PM</fx:String>
+							<fx:String>09:15 PM</fx:String>
+							<fx:String>09:30 PM</fx:String>
+							<fx:String>09:45 PM</fx:String>
+							
+							<fx:String>10:00 PM</fx:String>
+							<fx:String>10:15 PM</fx:String>
+							<fx:String>10:30 PM</fx:String>
+							<fx:String>10:45 PM</fx:String>
+							
+							<fx:String>11:00 PM</fx:String>
+							<fx:String>11:15 PM</fx:String>
+							<fx:String>11:30 PM</fx:String>
+							<fx:String>11:45 PM</fx:String>
+						</s:ArrayCollection>
+					</s:dataProvider>
+				</s:DropDownList>
+				<s:Spacer width="10"/>
+				<s:Label text="on days *"/>
+				<comp:DropDownListEx width="230">
+					<comp:dataProvider>
+						<s:ArrayCollection>
+							<fx:Object index="0" name="Sun"/>
+							<fx:Object index="1" name="Mon"/>
+							<fx:Object index="2" name="Tues"/>
+							<fx:Object index="3" name="Wed"/>
+							<fx:Object index="4" name="Thur"/>
+							<fx:Object index="5" name="Fri"/>
+							<fx:Object index="6" name="Sat"/>
+						</s:ArrayCollection>
+					</comp:dataProvider>
+				</comp:DropDownListEx>
+			</s:HGroup>
+		</s:NavigatorContent>
+		<s:NavigatorContent width="100%" height="100%" label="On specified days of the month">
+			<s:HGroup paddingBottom="20" paddingLeft="20" paddingTop="20" verticalAlign="middle">
+				<s:Label text="Run at"/>
+				<s:DropDownList selectedIndex="0">
+					<s:dataProvider>
+						<s:ArrayCollection>
+							<fx:String>12:00 AM</fx:String>
+							<fx:String>12:15 AM</fx:String>
+							<fx:String>12:30 AM</fx:String>
+							<fx:String>12:45 AM</fx:String>
+							
+							<fx:String>01:00 AM</fx:String>
+							<fx:String>01:15 AM</fx:String>
+							<fx:String>01:30 AM</fx:String>
+							<fx:String>01:45 AM</fx:String>
+							
+							<fx:String>02:00 AM</fx:String>
+							<fx:String>02:15 AM</fx:String>
+							<fx:String>02:30 AM</fx:String>
+							<fx:String>02:45 AM</fx:String>
+							
+							<fx:String>03:00 AM</fx:String>
+							<fx:String>03:15 AM</fx:String>
+							<fx:String>03:30 AM</fx:String>
+							<fx:String>03:45 AM</fx:String>
+							
+							<fx:String>04:00 AM</fx:String>
+							<fx:String>04:15 AM</fx:String>
+							<fx:String>04:30 AM</fx:String>
+							<fx:String>04:45 AM</fx:String>
+							
+							<fx:String>05:00 AM</fx:String>
+							<fx:String>05:15 AM</fx:String>
+							<fx:String>05:30 AM</fx:String>
+							<fx:String>05:45 AM</fx:String>
+							
+							<fx:String>06:00 AM</fx:String>
+							<fx:String>06:15 AM</fx:String>
+							<fx:String>06:30 AM</fx:String>
+							<fx:String>06:45 AM</fx:String>
+							
+							<fx:String>07:00 AM</fx:String>
+							<fx:String>07:15 AM</fx:String>
+							<fx:String>07:30 AM</fx:String>
+							<fx:String>07:45 AM</fx:String>
+							
+							<fx:String>08:00 AM</fx:String>
+							<fx:String>08:15 AM</fx:String>
+							<fx:String>08:30 AM</fx:String>
+							<fx:String>08:45 AM</fx:String>
+							
+							<fx:String>09:00 AM</fx:String>
+							<fx:String>09:15 AM</fx:String>
+							<fx:String>09:30 AM</fx:String>
+							<fx:String>09:45 AM</fx:String>
+							
+							<fx:String>10:00 AM</fx:String>
+							<fx:String>10:15 AM</fx:String>
+							<fx:String>10:30 AM</fx:String>
+							<fx:String>10:45 AM</fx:String>
+							
+							<fx:String>11:00 AM</fx:String>
+							<fx:String>11:15 AM</fx:String>
+							<fx:String>11:30 AM</fx:String>
+							<fx:String>11:45 AM</fx:String>
+							
+							<fx:String>12:00 PM</fx:String>
+							<fx:String>12:15 PM</fx:String>
+							<fx:String>12:30 PM</fx:String>
+							<fx:String>12:45 PM</fx:String>
+							
+							<fx:String>01:00 PM</fx:String>
+							<fx:String>01:15 PM</fx:String>
+							<fx:String>01:30 PM</fx:String>
+							<fx:String>01:45 PM</fx:String>
+							
+							<fx:String>02:00 PM</fx:String>
+							<fx:String>02:15 PM</fx:String>
+							<fx:String>02:30 PM</fx:String>
+							<fx:String>02:45 PM</fx:String>
+							
+							<fx:String>03:00 PM</fx:String>
+							<fx:String>03:15 PM</fx:String>
+							<fx:String>03:30 PM</fx:String>
+							<fx:String>03:45 PM</fx:String>
+							
+							<fx:String>04:00 PM</fx:String>
+							<fx:String>04:15 PM</fx:String>
+							<fx:String>04:30 PM</fx:String>
+							<fx:String>04:45 PM</fx:String>
+							
+							<fx:String>05:00 PM</fx:String>
+							<fx:String>05:15 PM</fx:String>
+							<fx:String>05:30 PM</fx:String>
+							<fx:String>05:45 PM</fx:String>
+							
+							<fx:String>06:00 PM</fx:String>
+							<fx:String>06:15 PM</fx:String>
+							<fx:String>06:30 PM</fx:String>
+							<fx:String>06:45 PM</fx:String>
+							
+							<fx:String>07:00 PM</fx:String>
+							<fx:String>07:15 PM</fx:String>
+							<fx:String>07:30 PM</fx:String>
+							<fx:String>07:45 PM</fx:String>
+							
+							<fx:String>08:00 PM</fx:String>
+							<fx:String>08:15 PM</fx:String>
+							<fx:String>08:30 PM</fx:String>
+							<fx:String>08:45 PM</fx:String>
+							
+							<fx:String>09:00 PM</fx:String>
+							<fx:String>09:15 PM</fx:String>
+							<fx:String>09:30 PM</fx:String>
+							<fx:String>09:45 PM</fx:String>
+							
+							<fx:String>10:00 PM</fx:String>
+							<fx:String>10:15 PM</fx:String>
+							<fx:String>10:30 PM</fx:String>
+							<fx:String>10:45 PM</fx:String>
+							
+							<fx:String>11:00 PM</fx:String>
+							<fx:String>11:15 PM</fx:String>
+							<fx:String>11:30 PM</fx:String>
+							<fx:String>11:45 PM</fx:String>
+						</s:ArrayCollection>
+					</s:dataProvider>
+				</s:DropDownList>
+				<s:Spacer width="10"/>
+				<s:Label text="on the *"/>
+				<comp:DropDownListEx width="230">
+					<comp:dataProvider>
+						<s:ArrayCollection>
+							<fx:Object index="0" name="1st"/>
+							<fx:Object index="1" name="2nd"/>
+							<fx:Object index="2" name="3rd"/>
+							<fx:Object index="3" name="4th"/>
+							<fx:Object index="4" name="5th"/>
+							<fx:Object index="5" name="6th"/>
+							<fx:Object index="6" name="7th"/>
+							<fx:Object index="7" name="8th"/>
+							<fx:Object index="8" name="9th"/>
+							<fx:Object index="9" name="10th"/>
+							<fx:Object index="10" name="11th"/>
+							<fx:Object index="11" name="12th"/>
+							<fx:Object index="12" name="13th"/>
+							<fx:Object index="13" name="14th"/>
+							<fx:Object index="14" name="15th"/>
+							<fx:Object index="15" name="16th"/>
+							<fx:Object index="16" name="17th"/>
+							<fx:Object index="17" name="18th"/>
+							<fx:Object index="18" name="19th"/>
+							<fx:Object index="19" name="20th"/>
+							<fx:Object index="20" name="21st"/>
+							<fx:Object index="21" name="22nd"/>
+							<fx:Object index="22" name="23rd"/>
+							<fx:Object index="23" name="24th"/>
+							<fx:Object index="24" name="25th"/>
+							<fx:Object index="25" name="26th"/>
+							<fx:Object index="26" name="27th"/>
+							<fx:Object index="27" name="28th"/>
+							<fx:Object index="28" name="29th"/>
+							<fx:Object index="29" name="30th"/>
+							<fx:Object index="30" name="31st"/>
+						</s:ArrayCollection>
+					</comp:dataProvider>
+				</comp:DropDownListEx>
+				<s:Label text="of every month"/>
+			</s:HGroup>
+		</s:NavigatorContent>
+	</mx:ViewStack>
+	<mx:HRule width="100%" height="20"/>
+	<s:CheckBox label="Enable Recovery Point Objective (RPO)" selected="true"/>
+	<s:HGroup width="100%" paddingLeft="20" paddingTop="10" verticalAlign="middle">
+		<s:Label text="RPO"/>
+		<s:DropDownList selectedIndex="8">
+			<s:dataProvider>
+				<s:ArrayCollection>
+					<fx:String>30 minutes</fx:String>
+					<fx:String>1 hour</fx:String>
+					<fx:String>2 hours</fx:String>
+					<fx:String>3 hours</fx:String>
+					<fx:String>4 hours</fx:String>
+					<fx:String>6 hours</fx:String>
+					<fx:String>8 hours</fx:String>
+					<fx:String>12 hours</fx:String>
+					<fx:String>24 hours</fx:String>
+				</s:ArrayCollection>
+			</s:dataProvider>
+		</s:DropDownList>
+	</s:HGroup>
+</s:Group>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="400" height="300">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Scroller x="85" y="59" width="283" height="222">
+		<s:VGroup width="100%" height="100%">
+			<s:Panel width="147" height="135" borderVisible="false" chromeColor="#F5E2E2"
+					 dropShadowVisible="false" enabled="true" rollOverColor="#CEDBEF"
+					 symbolColor="#000000" title="qqqq">
+			</s:Panel>
+		</s:VGroup>
+	</s:Scroller>
+</s:Group>

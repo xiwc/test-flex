@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				   xmlns:s="library://ns.adobe.com/flex/spark"
+				   xmlns:mx="library://ns.adobe.com/flex/mx"
+				   height="25" borderVisible="true"
+				   creationComplete="bordercontainer1_creationCompleteHandler(event)">
+	<s:layout>
+		<s:HorizontalLayout gap="1" paddingLeft="1" verticalAlign="middle"/>
+	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.managers.IFocusManagerComponent;
+			
+			public function getValue():String{
+				return txtHour.text + ":" + txtMin.text + ":" + txtSec.text + " " + txtAmPm.text;
+			}
+			
+			protected function txtHour_focusInHandler(event:FocusEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setHour(parseInt(txt.text));
+			}
+			
+			private function setHour(val:Number):void{
+				
+				if(isNaN(val)){
+					txtHour.text = "0" + String(1);
+					return;
+				}
+				
+				if(val > 12){
+					txtHour.text = "0" + String(1);
+				}else if(val > 0 && val < 10){
+					txtHour.text = "0" + String(val);
+				}else if(val <= 0){
+					txtHour.text = String(12);
+				}else{
+					txtHour.text = String(val);
+				}
+			}
+			
+			private function setMin(val:Number):void{
+				
+				if(isNaN(val)){
+					txtMin.text = "0" + String(0);
+					return;
+				}
+				
+				if(val > 59){
+					txtMin.text = "0" + String(0);
+				}else if(val >= 0 && val < 10){
+					txtMin.text = "0" + String(val);
+				}else if(val < 0){
+					txtMin.text = String(59);
+				}else{
+					txtMin.text = String(val);
+				}
+			}
+			
+			private function setSec(val:Number):void{
+				
+				if(isNaN(val)){
+					txtSec.text = "0" + String(0);
+					return;
+				}
+				
+				if(val > 59){
+					txtSec.text = "0" + String(0);
+				}else if(val >= 0 && val < 10){
+					txtSec.text = "0" + String(val);
+				}else if(val < 0){
+					txtSec.text = String(59);
+				}else{
+					txtSec.text = String(val);
+				}
+			}
+			
+			protected function txtHour_focusOutHandler(event:FocusEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setHour(parseInt(txt.text));
+			}
+			
+			protected function spinner_changeHandler(event:Event):void
+			{
+				trace(event);
+			}
+			
+			protected function bordercontainer1_creationCompleteHandler(event:FlexEvent):void
+			{
+				spinner.decrementButton.addEventListener(FlexEvent.BUTTON_DOWN, decrementButton_buttonDownHandler);
+				spinner.incrementButton.addEventListener(FlexEvent.BUTTON_DOWN, incrementButton_buttonDownHandler);
+			}
+			
+			protected function decrementButton_buttonDownHandler(event:Event):void
+			{
+				var focus:IFocusManagerComponent = focusManager.getFocus();
+				
+				if(focus == txtHour){
+					setHour(parseInt(txtHour.text) - 1);
+				}else if(focus == txtMin){
+					setMin(parseInt(txtMin.text) - 1);
+				}else if(focus == txtSec){
+					setSec(parseInt(txtSec.text) - 1);
+				}
+			}  
+			protected function incrementButton_buttonDownHandler(event:Event):void
+			{
+				var focus:IFocusManagerComponent = focusManager.getFocus();
+				
+				if(focus == txtHour){
+					setHour(parseInt(txtHour.text) + 1);
+				}else if(focus == txtMin){
+					setMin(parseInt(txtMin.text) + 1);
+				}else if(focus == txtSec){
+					setSec(parseInt(txtSec.text) + 1);
+				}
+			}  
+			
+			protected function txtHour_enterHandler(event:FlexEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setHour(parseInt(txt.text));
+				
+				focusManager.setFocus(txtMin);
+			}
+			
+			protected function txtMin_focusInHandler(event:FocusEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setMin(parseInt(txt.text));
+			}
+			
+			protected function txtMin_focusOutHandler(event:FocusEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setMin(parseInt(txt.text));
+			}
+			
+			protected function txtMin_enterHandler(event:FlexEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setMin(parseInt(txt.text));
+				
+				focusManager.setFocus(txtSec);
+			}
+			
+			protected function txtSec_focusInHandler(event:FocusEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setSec(parseInt(txt.text));
+			}
+			
+			protected function txtSec_focusOutHandler(event:FocusEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setSec(parseInt(txt.text));
+			}
+			
+			protected function txtSec_enterHandler(event:FlexEvent):void
+			{
+				var txt:TextInput = event.currentTarget as TextInput;
+				
+				setSec(parseInt(txt.text));
+				
+				focusManager.setFocus(txtHour);
+			}
+			
+			protected function txtAmPm_clickHandler(event:MouseEvent):void
+			{
+				if(txtAmPm.text.toLowerCase() == "am"){
+					txtAmPm.text = "pm";
+				}else{
+					txtAmPm.text = "am";
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:TextInput id="txtHour" width="22" borderVisible="false" enter="txtHour_enterHandler(event)"
+				 focusIn="txtHour_focusInHandler(event)" focusOut="txtHour_focusOutHandler(event)"
+				 maxChars="2" restrict="0-9" text="12"/>
+	<s:Label text=":"/>
+	<s:TextInput id="txtMin" width="22" borderVisible="false" enter="txtMin_enterHandler(event)"
+				 focusIn="txtMin_focusInHandler(event)" focusOut="txtMin_focusOutHandler(event)"
+				 maxChars="2" restrict="0-9" text="00"/>
+	<s:Label text=":"/>
+	<s:TextInput id="txtSec" width="22" borderVisible="false" enter="txtSec_enterHandler(event)"
+				 focusIn="txtSec_focusInHandler(event)" focusOut="txtSec_focusOutHandler(event)"
+				 maxChars="2" restrict="0-9" text="00"/>
+	<s:TextInput id="txtAmPm" width="25" borderVisible="false" click="txtAmPm_clickHandler(event)"
+				 color="gray" editable="false" maxChars="2" restrict="apm" selectable="false"
+				 text="am"/>
+	<s:Spinner id="spinner" change="spinner_changeHandler(event)" focusEnabled="false"/>
+</s:BorderContainer>

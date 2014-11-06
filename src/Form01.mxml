@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Form x="10" y="6" width="380" height="210">
+		<s:FormHeading width="362" label="Setting for the AppSync Server:" textAlign="center"/>
+		<s:FormItem width="240" label="AppSync Server:">
+			<s:Label id="lblServer" text="vpi7096"/>
+		</s:FormItem>
+		<s:FormItem label="AppSync Server Port:">
+			<s:Label id="lblPort" text="8445"/>
+		</s:FormItem>
+		<s:FormItem label="AppSync Server Version:">
+			<s:Label id="lblVersion" text="1.6.0.0"/>
+		</s:FormItem>
+		<s:FormItem label="AppSync Username:">
+			<s:Label id="lblUserName" text="admin"/>
+		</s:FormItem>
+	</s:Form>
+	<s:Label x="10" y="237" color="red" fontWeight="bold"
+			 text="Clicking 'Finish' button will register AppSync credentials in VSI."/>
+</s:Group>

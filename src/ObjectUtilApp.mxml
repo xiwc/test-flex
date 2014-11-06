@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600"
+			   creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.utils.ObjectUtil;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var obj1:Object = {};
+				var data:Object = {};
+				obj1.data = data;
+				
+				var obj2:Object = ObjectUtil.clone(obj1);
+				
+				trace(obj2.data == obj1.data);
+				
+				var arr1:Array = [];
+				arr1.push(data);
+				
+				var arr2:Array = ObjectUtil.clone(arr1) as Array;
+				arr2[0] = data;
+				
+				trace(arr2[0] == arr1[0]);
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+</s:Application>

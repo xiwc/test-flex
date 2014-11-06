@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600"
+			   creationComplete="application1_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.utils.StringUtil;
+			
+			import spark.components.TextInput;
+			import spark.events.TextOperationEvent;
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				Alert.show(String(nsNum.value));
+			}
+			
+			protected function nsNum_changeHandler(event:Event):void
+			{
+				if(isNaN(nsNum.value) || nsNum.value < 1 || nsNum.value > 999){
+					nsNum.value = 1;
+				}
+			}
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var textDisplay:TextInput = nsNum.textDisplay;
+				textDisplay.restrict = "0-9";
+				textDisplay.addEventListener(KeyboardEvent.KEY_UP, function():void{
+					var txt:String = textDisplay.text;
+					
+					if(txt == '0'){
+						nsNum.value = 1;
+						textDisplay.text = '1';
+					}
+				});
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:NumericStepper id="nsNum" x="276" y="123" width="114" maxChars="3" maximum="999" minimum="1"/>
+	<s:Button x="276" y="170" label="show set value" click="button1_clickHandler(event)"/>
+	<s:Spinner x="248" y="266" width="23" height="65"/>
+</s:Application>

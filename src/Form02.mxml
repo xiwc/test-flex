@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="638" height="498">
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="justify"/>
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Panel width="250" height="141" dropShadowVisible="false" title="Connection">
+		<s:VGroup x="10" y="10" width="568" height="103" gap="1">
+			<s:FormHeading label="Enter the name or IP address and https port of the AppSync server to add."/>
+			<s:Form>
+				<s:layout>
+					<s:HorizontalLayout/>
+				</s:layout>
+				<s:FormItem label="Host:">
+					<s:TextInput id="txtHost" text="192.168.0.100"/>
+				</s:FormItem>
+				<s:FormItem label="Port:">
+					<s:TextInput id="txtPort" width="46" text="8445"/>
+				</s:FormItem>
+			</s:Form>
+		</s:VGroup>
+	</s:Panel>
+	<s:Panel width="250" height="189" dropShadowVisible="false" title="Authorization">
+		<s:VGroup x="10" y="10" width="569" height="150" gap="1">
+			<s:FormHeading label="Enter account information for the AppSync server."/>
+			<s:Form>
+				<s:FormItem label="User Name:">
+					<s:TextInput id="txtUserName" text="admin"/>
+				</s:FormItem>
+				<s:FormItem label="Password:">
+					<s:TextInput id="txtPassword" displayAsPassword="true" text="admin"/>
+				</s:FormItem>
+			</s:Form>
+		</s:VGroup>
+	</s:Panel>
+	<s:Panel width="250" height="150" dropShadowVisible="false" title="Test Connection">
+		<s:VGroup x="10" y="10" width="597" height="112" gap="1">
+			<s:FormHeading width="600"
+						   label="Test the connection to the AppSync server using the information above.You won't be able to proceed with this wizard until you get a successful connection."/>
+			<s:Form>
+				<s:layout>
+					<s:HorizontalLayout verticalAlign="middle"/>
+				</s:layout>
+				<s:Button id="btnTest" label="Test"/>
+				<s:FormItem>
+					<s:Label id="lblTestResult" text="Connection successful!"/>
+				</s:FormItem>
+			</s:Form>
+		</s:VGroup>
+	</s:Panel>
+</s:Group>

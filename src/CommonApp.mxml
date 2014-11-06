@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				trace(null is ArrayCollection);
+				
+				var s:String = "*:*:*:*:0:0:0";//"startupSchedule": "*:*:*:*:0:0:0" (dayOfMonth: dayOfWeek: year: month: hour: minute: second)
+				s = s.replace("*", "");
+			
+				var arr:Array = s.split(':');
+				
+				trace(arr);
+				
+				var r:String = '*:*:*:*:{hour}:{min}:0';
+				
+				trace(r.replace('{hour}', 'xxx'));
+				trace(r.replace('{min}', 'yyy'));
+				
+				var arr2:Array = [];
+				trace(arr2.join(','));
+				
+				var i:int = 1;
+				
+				if(i == 0){
+					var sss:String = "";
+				}else{
+					sss = 'ddd';
+					trace(sss);
+				}
+				
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+</s:Application>
