@@ -6,35 +6,55 @@
 			   creationComplete="application1_creationCompleteHandler(event)">
 	<fx:Script>
 		<![CDATA[
+			import flash.globalization.DateTimeFormatter;
+			
 			import mx.controls.Alert;
 			import mx.events.FlexEvent;
+			
+			import spark.formatters.DateTimeFormatter;
 			
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
 				// TODO Auto-generated method stub
 				
-				// date -> time/timezoneOffset
-				var date:Date = new Date(2014, 10, 10, 13, 30, 59, 200);
-				Alert.show(date.toString());
-				//Mon Nov 10 13:30:59 GMT+0800 2014
-				//Mon Nov 10 13:30:59 GMT+1300 2014
-				Alert.show(date.time.toString());
-				//1415597459200 
-				//1415579459200
-				Alert.show(date.timezoneOffset.toString());
-				//-480
-				//-780
-				
-				// time -> date
-				var d:Date = new Date(1415579459200);
-				Alert.show(d.toString());
-				//Mon Nov 10 13:30:59 GMT+1300 2014
-				//Mon Nov 10 08:30:59 GMT+0800 2014
+//				// date -> time/timezoneOffset
+//				var date:Date = new Date(2014, 10, 10, 13, 30, 59, 200);
+//				Alert.show(date.toString());
+//				//Mon Nov 10 13:30:59 GMT+0800 2014
+//				//Mon Nov 10 13:30:59 GMT+1300 2014
+//				Alert.show(date.time.toString());
+//				//1415597459200 
+//				//1415579459200
+//				Alert.show(date.timezoneOffset.toString());
+//				//-480
+//				//-780
+//				
+//				// time -> date
+//				var d:Date = new Date(1415579459200);
+//				Alert.show(d.toString());
+//				//Mon Nov 10 13:30:59 GMT+1300 2014
+//				//Mon Nov 10 08:30:59 GMT+0800 2014
+			}
+			
+			private function dateFormat(date:Date):String{
+				return formatter.format(date);
+			}
+			
+			private function parseFunction(date:String, format:String):Date{
+				return new Date();
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				Alert.show(String(dateField.selectedDate));
 			}
 			
 		]]>
 	</fx:Script>
 	<fx:Declarations>
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+		<mx:DateFormatter id="formatter" formatString="EEE MM/DD/YYYY"/>
 	</fx:Declarations>
+	<mx:DateField id="dateField" x="87" y="46" labelFunction="dateFormat" parseFunction="parseFunction"/>
+	<s:Button x="222" y="46" label=" Get Date" click="button1_clickHandler(event)"/>
 </s:Application>
