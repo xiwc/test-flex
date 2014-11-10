@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600"
+			   creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+				// date -> time/timezoneOffset
+				var date:Date = new Date(2014, 10, 10, 13, 30, 59, 200);
+				Alert.show(date.toString());
+				//Mon Nov 10 13:30:59 GMT+0800 2014
+				//Mon Nov 10 13:30:59 GMT+1300 2014
+				Alert.show(date.time.toString());
+				//1415597459200 
+				//1415579459200
+				Alert.show(date.timezoneOffset.toString());
+				//-480
+				//-780
+				
+				// time -> date
+				var d:Date = new Date(1415579459200);
+				Alert.show(d.toString());
+				//Mon Nov 10 13:30:59 GMT+1300 2014
+				//Mon Nov 10 08:30:59 GMT+0800 2014
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+</s:Application>
