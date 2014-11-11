@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import comp.LabelTitleWindow;
+			
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var labelTitleWindow:LabelTitleWindow = new LabelTitleWindow();
+				labelTitleWindow.setLabel();
+				
+				PopUpManager.addPopUp(labelTitleWindow, FlexGlobals.topLevelApplication as DisplayObject, true);
+				PopUpManager.bringToFront(labelTitleWindow);
+				PopUpManager.centerPopUp(labelTitleWindow);
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+</s:Application>

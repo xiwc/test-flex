@@ -2,30 +2,23 @@
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 			   xmlns:s="library://ns.adobe.com/flex/spark"
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
-			   xmlns:comp="comp.*"
 			   minWidth="955" minHeight="600" creationComplete="application1_creationCompleteHandler(event)">
-	
+	<fx:Declarations>
+			<s:DateTimeFormatter id="formatter" dateTimePattern="EEE MM/dd/yyyy hh:mm:ss a"/>
+			<s:DateTimeFormatter id="formatter2" dateTimePattern="hh:mm:ss a"/>
+	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
 			import mx.controls.Alert;
 			import mx.events.FlexEvent;
-			protected function button1_clickHandler(event:MouseEvent):void
-			{
-				Alert.show(timeComp.getTime().toString());
-			}
+			import mx.formatters.DateFormatter;
 			
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
-				timeComp.setTime(new Date(new Date().time + 5 * 60 * 60 * 1000));
+				//Alert.show(formatter2.format(new Date(new Date().time + 5 * 60 * 60 * 1000)));
+				Alert.show(String(13 % 24));
 			}
 			
 		]]>
 	</fx:Script>
-	
-	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
-	</fx:Declarations>
-	<comp:TimeField id="timeComp" x="262" y="208">
-	</comp:TimeField>
-	<s:Button x="430" y="214" label="GET TIME" click="button1_clickHandler(event)"/>
 </s:Application>
