@@ -20,9 +20,9 @@
 				var hour:Number = parseInt(txtHour.text);
 				
 				if(txtAmPm.text.toLowerCase() == "am"){
-					time.hours = hour;
+					time.hours = hour % 12;
 				}else{
-					time.hours = (hour + 12) % 24;
+					time.hours = hour % 12 + 12;
 				}
 				time.minutes = parseInt(txtMin.text);
 				time.seconds = parseInt(txtSec.text);

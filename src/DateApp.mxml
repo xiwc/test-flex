@@ -10,8 +10,40 @@
 			
 			import mx.controls.Alert;
 			import mx.events.FlexEvent;
+			import mx.messaging.channels.StreamingAMFChannel;
 			
 			import spark.formatters.DateTimeFormatter;
+			
+			private function parseDateTime(dateTime:String):Date{
+				
+				// Thu 11/06/2014 01:57:40 PM
+				// dateTime = 'Thu 11/06/2014 01:57:40 PM';
+				
+				var arr:Array = dateTime.split(' ');
+				var dateArr:Array = arr[1].split('/');;
+				var timeArr:Array = arr[2].split(':');
+				var ap:String = arr[3];
+				
+				var dt:Date = new Date();
+				
+				// set y/m/d
+				dt.fullYear = parseInt(dateArr[2]);
+				dt.month = parseInt(dateArr[0]) - 1;
+				dt.date = parseInt(dateArr[1]);
+				
+				// set h/m/s
+				var hour:Number = parseInt(timeArr[0]);
+				
+				if(ap.toLowerCase() == "am"){
+					dt.hours = hour % 12;
+				}else{
+					dt.hours = (hour + 12) % 24;
+				}
+				dt.minutes = parseInt(timeArr[1]);
+				dt.seconds = parseInt(timeArr[2]);
+				
+				return dt;
+			}
 			
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
@@ -34,19 +66,22 @@
 //				Alert.show(d.toString());
 //				//Mon Nov 10 13:30:59 GMT+1300 2014
 //				//Mon Nov 10 08:30:59 GMT+0800 2014
+				
+				Alert.show(parseDateTime('Thu 11/06/2014 01:57:40 PM').toString());
 			}
 			
 			private function dateFormat(date:Date):String{
 				return formatter.format(date);
 			}
 			
-			private function parseFunction(date:String, format:String):Date{
-				return new Date();
-			}
-			
 			protected function button1_clickHandler(event:MouseEvent):void
 			{
 				Alert.show(String(dateField.selectedDate));
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				Alert.show(String(dateField2.selectedDate));
 			}
 			
 		]]>
@@ -55,6 +90,8 @@
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 		<mx:DateFormatter id="formatter" formatString="EEE MM/DD/YYYY"/>
 	</fx:Declarations>
-	<mx:DateField id="dateField" x="87" y="46" labelFunction="dateFormat" parseFunction="parseFunction"/>
+	<mx:DateField id="dateField" x="87" y="46" labelFunction="dateFormat"/>
+	<mx:DateField id="dateField2" x="87" y="86" formatString="EEE MM/DD/YYYY" labelFunction="dateFormat"/>
 	<s:Button x="222" y="46" label=" Get Date" click="button1_clickHandler(event)"/>
+	<s:Button x="222" y="86" label=" Get Date" click="button2_clickHandler(event)"/>
 </s:Application>

@@ -6,6 +6,7 @@
 	<fx:Declarations>
 			<s:DateTimeFormatter id="formatter" dateTimePattern="EEE MM/dd/yyyy hh:mm:ss a"/>
 			<s:DateTimeFormatter id="formatter2" dateTimePattern="hh:mm:ss a"/>
+			<mx:DateFormatter id="dateFormatter2" formatString="MM/DD/YYYY JJ:NN:SS"/>
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
@@ -16,7 +17,8 @@
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
 				//Alert.show(formatter2.format(new Date(new Date().time + 5 * 60 * 60 * 1000)));
-				Alert.show(String(13 % 24));
+				//Alert.show(String(13 % 24));
+				Alert.show(dateFormatter2.format(new Date()));
 			}
 			
 		]]>

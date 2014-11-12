@@ -36,6 +36,7 @@
     <application path="DateTimeFormatterApp.mxml"/>
     <application path="LabelTestApp.mxml"/>
     <application path="DateApp.mxml"/>
+    <application path="GridApp.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
