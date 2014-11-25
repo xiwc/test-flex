@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600"
+			   creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.utils.ObjectUtil;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var obj:Object = {
+					"id": "e07fb9f4-0c04-4d52-ac8f-f1ce4aab9da8",
+					"type": "datastore",
+					"options": {
+						"vCenterServer": "dd7096ff-1417-49af-acff-d9eb68312617",
+						"datastore": "ds:///vmfs/volumes/545aa3db-ffb16c39-38e1-d072dc5a4584/"
+					},
+					"override": {
+						"id": "e89ddb6a-d905-4c42-8bc1-b963ed359376",
+						"enabled": "true",
+						"name": "Mount Copy",
+						"options": {
+							"vCenterUuid": "844BC0C8-2252-49E5-8663-26473257D993",
+							"resignature": "true",
+							"clusterMount": "false",
+							"accessMode": "physical",
+							"accessType": "read-only"
+						}
+					},
+					"datastore": {
+						"id": "b7459be9-1852-404d-94fc-bfe35989b937",
+						"name": "Natasha_CG_CLR_2",
+						"datastoreVcenterId": "datastore-2162",
+						"datastoreUrl": "ds:///vmfs/volumes/545aa3db-ffb16c39-38e1-d072dc5a4584/",
+						"vcenterName": "10.102.7.17",
+						"datacenterName": "vsi_sh_dev_dc"
+					}
+				};
+				
+				Alert.show(ObjectUtil.toString(mergeObject(obj)));
+			}
+			
+			
+			/**
+			 * merge Object {k1:{k2:'val'} to {k1_k2: 'val'}
+			 */ 
+			public static function mergeObject(objSrc:Object, objTo:Object=null, ns:String=null):Object{
+				
+				if(objTo == null){
+					objTo = {};
+				}
+				
+				if(objSrc != null){
+					for(var name:Object in objSrc){
+						var val:Object = objSrc[name];
+						
+						if(val is String || val is Number || val is Boolean){
+							if(ns == null){
+								objTo[name] = val;
+							}else{
+								objTo[ns + '_' + name] = val;
+							}
+						}else{
+							mergeObject(val, objTo, (ns != null) ? ns + "_" + String(name) : String(name));
+						}
+					}
+				}
+				
+				return objTo;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+</s:Application>

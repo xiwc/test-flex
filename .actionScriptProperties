@@ -37,6 +37,8 @@
     <application path="LabelTestApp.mxml"/>
     <application path="DateApp.mxml"/>
     <application path="GridApp.mxml"/>
+    <application path="MergeObjectAPp.mxml"/>
+    <application path="TApp.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
