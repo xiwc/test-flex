@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="400" height="300" creationComplete="panel1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			import mx.events.SandboxMouseEvent;
+			
+			import spark.components.Button;
+			
+			protected function panel1_creationCompleteHandler(event:FlexEvent):void
+			{
+				setStyle("skinClass", AppsyncResizablePanelSkin);
+			}
+			
+			[SkinPart(required="false")]
+			public var resizeHandle:UIComponent;
+			
+			[SkinPart(required="false")]
+			public var closeButton:UIComponent;
+			
+			//--------------------------------------------------------------------------
+			//
+			//  Overridden methods: UIComponent, SkinnableComponent
+			//
+			//--------------------------------------------------------------------------
+			
+			/**
+			 *  @private
+			 */
+			override protected function partAdded(partName:String, instance:Object) : void
+			{
+				super.partAdded(partName, instance);
+				
+				if (instance == resizeHandle)
+				{
+					resizeHandle.addEventListener(MouseEvent.MOUSE_DOWN, resizeHandle_mouseDownHandler);
+				}else if(instance == closeButton){
+					closeButton.addEventListener(MouseEvent.CLICK, closeButton_clickHandler);
+				}
+			}
+			
+			/**
+			 *  @private
+			 */
+			override protected function partRemoved(partName:String, instance:Object):void
+			{
+				if (instance == resizeHandle)
+				{
+					resizeHandle.removeEventListener(MouseEvent.MOUSE_DOWN, resizeHandle_mouseDownHandler);
+				}else if(instance == closeButton){
+					closeButton.removeEventListener(MouseEvent.CLICK, closeButton_clickHandler);
+				}
+				
+				super.partRemoved(partName, instance);
+			}
+			
+			private var lastWidth:Number;
+			private var lastHeight:Number;
+			
+			protected function closeButton_clickHandler(event:MouseEvent):void
+			{
+				
+				var btn:Button = event.currentTarget as Button;
+				
+				if(btn.name == 'btnMaximize'){
+					
+					this.lastWidth = this.width;
+					this.lastHeight = this.height;
+					
+					var parent:DisplayObject = this.parent as DisplayObject;
+					
+					this.width = parent.width;
+					this.height = parent.height;
+					
+					btn.name = 'btnRestoredown';
+					btn.setStyle('icon', resourceManager.getClass('info', 'restoredown.icon'));
+				}else{
+					
+					this.width = lastWidth;
+					this.height = lastHeight;
+					
+					btn.name = 'btnMaximize';
+					btn.setStyle('icon', resourceManager.getClass('info', 'maximize.icon'));
+				}
+			}
+			
+			
+			private var prevWidth:Number;
+			private var prevHeight:Number;
+			private var clickOffset:Point;
+			
+			protected function resizeHandle_mouseDownHandler(event:MouseEvent):void
+			{
+				if (enabled && !clickOffset)
+				{        
+					clickOffset = new Point(event.stageX, event.stageY);
+					prevWidth = width;
+					prevHeight = height;
+					
+					var sbRoot:DisplayObject = systemManager.getSandboxRoot();
+					
+					sbRoot.addEventListener(
+						MouseEvent.MOUSE_MOVE, resizeHandle_mouseMoveHandler, true);
+					sbRoot.addEventListener(
+						MouseEvent.MOUSE_UP, resizeHandle_mouseUpHandler, true);
+					sbRoot.addEventListener(
+						SandboxMouseEvent.MOUSE_UP_SOMEWHERE, resizeHandle_mouseUpHandler)
+				}
+			}
+			
+			protected function resizeHandle_mouseMoveHandler(event:MouseEvent):void
+			{
+				// during a resize, only the TitleWindow should get mouse move events
+				// we don't check the target since this is on the systemManager and the target
+				// changes a lot -- but this listener only exists during a resize.
+				event.stopImmediatePropagation();
+				
+				if (!clickOffset)
+				{
+					return;
+				}
+				
+				var parent:DisplayObject = this.parent as DisplayObject;
+				
+				var w:Number = prevWidth + (event.stageX - clickOffset.x);
+				var h:Number = prevHeight + (event.stageY - clickOffset.y);
+				
+				if(w <= parent.width){
+					width = w;
+				}
+				
+				if(h <= parent.height){
+					height = h;
+				}
+				
+				event.updateAfterEvent();
+			}
+			
+			protected function resizeHandle_mouseUpHandler(event:Event):void
+			{
+				clickOffset = null;
+				prevWidth = NaN;
+				prevHeight = NaN;
+				
+				var sbRoot:DisplayObject = systemManager.getSandboxRoot();
+				
+				sbRoot.removeEventListener(
+					MouseEvent.MOUSE_MOVE, resizeHandle_mouseMoveHandler, true);
+				sbRoot.removeEventListener(
+					MouseEvent.MOUSE_UP, resizeHandle_mouseUpHandler, true);
+				sbRoot.removeEventListener(
+					SandboxMouseEvent.MOUSE_UP_SOMEWHERE, resizeHandle_mouseUpHandler);
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+</s:Panel>

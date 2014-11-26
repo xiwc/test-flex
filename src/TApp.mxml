@@ -13,7 +13,7 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import comp.ResizableTitleWindowSkin;
+			import comp.AppsyncResizablePanelSkin;
 			
 			import mx.core.FlexGlobals;
 			import mx.events.FlexEvent;
@@ -21,7 +21,6 @@
 			
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
-				panel1.setStyle("skinClass", ResizableTitleWindowSkin);
 			}
 			
 		]]>
@@ -33,7 +32,7 @@
 		<s:layout>
 			<s:HorizontalLayout/>
 		</s:layout>
-		<comp:MyPanel id="panel1"/>
+		<comp:AppsyncResizablePanel id="panel1"/>
 		
 	</s:BorderContainer>
 		
