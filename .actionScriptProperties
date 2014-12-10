@@ -16,29 +16,34 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="BindingApp.mxml"/>
-    <application path="ObjectUtilApp.mxml"/>
     <application path="Comp01App.mxml"/>
-    <application path="ImageApp.mxml"/>
-    <application path="ScheduleApp.mxml"/>
-    <application path="AlertApp.mxml"/>
     <application path="AdvancedDataGridApp.mxml"/>
     <application path="CommonApp.mxml"/>
-    <application path="PortTextInputApp.mxml"/>
+    <application path="DateApp.mxml"/>
+    <application path="TApp.mxml"/>
     <application path="Form01App.mxml"/>
-    <application path="MaskingViewApp.mxml"/>
-    <application path="LabelApp.mxml"/>
-    <application path="Main.mxml"/>
-    <application path="ReadOnlyApp.mxml"/>
-    <application path="Form02App.mxml"/>
-    <application path="NumericStepperApp.mxml"/>
-    <application path="TimeInputApp.mxml"/>
+    <application path="MergeObjectAPp.mxml"/>
     <application path="DateTimeFormatterApp.mxml"/>
     <application path="LabelTestApp.mxml"/>
-    <application path="DateApp.mxml"/>
+    <application path="LabelApp.mxml"/>
+    <application path="Main.mxml"/>
+    <application path="Form02App.mxml"/>
+    <application path="NumericStepperApp.mxml"/>
+    <application path="ScheduleApp.mxml"/>
+    <application path="ImageApp.mxml"/>
+    <application path="ObjectUtilApp.mxml"/>
+    <application path="BindingApp.mxml"/>
+    <application path="AlertApp.mxml"/>
     <application path="GridApp.mxml"/>
-    <application path="MergeObjectAPp.mxml"/>
-    <application path="TApp.mxml"/>
+    <application path="PortTextInputApp.mxml"/>
+    <application path="TitleGroupApp.mxml"/>
+    <application path="MaskingViewApp.mxml"/>
+    <application path="ReadOnlyApp.mxml"/>
+    <application path="TimeInputApp.mxml"/>
+    <application path="NumberTextInputApp.mxml"/>
+    <application path="LayoutApp.mxml"/>
+    <application path="EmbeddedMsgApp.mxml"/>
+    <application path="TreeGridApp.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>

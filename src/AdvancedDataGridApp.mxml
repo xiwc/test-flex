@@ -31,7 +31,7 @@
 	<fx:Metadata>
 		[ResourceBundle("info")]
 	</fx:Metadata>
-	<mx:AdvancedDataGrid id="adg1" x="123" y="60" width="505" height="309"
+	<mx:AdvancedDataGrid id="adg1" x="123" y="60" width="505" rowCount="5"
 						 allowMultipleSelection="true" dataProvider="{model}"
 						 designViewDataType="flat" horizontalScrollPolicy="auto"
 						 selectionMode="multipleRows">
