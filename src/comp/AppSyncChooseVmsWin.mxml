@@ -3,11 +3,10 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark"
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
 			   width="400" height="400" close="titlewindow1_closeHandler(event)"
-			   title="Ignore VM Snapshot List">
+			   title="Ignore VM Snapshot List" xmlns:comp="comp.*">
 	<fx:Metadata>
 		[ResourceBundle("info")]
 	</fx:Metadata>
-	
 	<fx:Script>
 		<![CDATA[
 			import mx.collections.ArrayCollection;
@@ -98,6 +97,7 @@
 							
 							<fx:Script>
 								<![CDATA[
+									import mx.resources.ResourceManager;
 									
 									private var _data:Object;
 									
@@ -118,7 +118,10 @@
 							<s:Spacer width="7"/>
 							<mx:CheckBox change="checkbox1_changeHandler(event)"
 										 selected="{data.isSelected}"/>
-							<mx:Label text="{data.vm}"/>
+							<s:HGroup verticalAlign="middle" gap="0">
+								<s:Image source="{ResourceManager.getInstance().getClass('info', 'vm.icon')}"/>
+								<mx:Label text="{data.vm}"/>
+							</s:HGroup>
 						</mx:HBox>
 					</fx:Component>
 				</mx:itemRenderer>
