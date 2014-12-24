@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009"
+			 xmlns:mx="library://ns.adobe.com/flex/mx"
+			 xmlns:s="library://ns.adobe.com/flex/spark"
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+			 alpha.disabled="0.5">
+	<fx:Metadata>
+		[HostComponent("comp.TitleGroup")]
+	</fx:Metadata> 
+	
+	<fx:Script fb:purpose="styling">
+		
+		static private const exclusions:Array = ["titleDisplay", "contentGroup"];
+		
+		/**
+		 * @private
+		 */
+		override public function get colorizeExclusions():Array {
+			return exclusions;
+		}
+		
+		/**
+		 * @private
+		 */
+		override protected function initializationComplete():void
+		{
+			useChromeColor = true;
+			super.initializationComplete();
+		}
+		
+		private var cornerRadius:Number;
+		
+		/**
+		 * @private
+		 */
+		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+		{
+			var cr:Number = getStyle("cornerRadius");
+			
+			if (cornerRadius != cr)
+			{
+				cornerRadius = cr;
+				border.topLeftRadiusX = cornerRadius;
+				border.topRightRadiusX = cornerRadius;
+				border.bottomLeftRadiusX = cornerRadius;
+				border.bottomRightRadiusX = cornerRadius;
+			}
+			
+			borderStroke.color = getStyle("borderColor");
+			borderStroke.alpha = getStyle("borderAlpha");
+			
+			super.updateDisplayList(unscaledWidth, unscaledHeight);
+		}
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+	</s:states>
+	
+	<!-- border masking -->
+	<s:Group id="borderGroupMask" left="0" right="0" top="0" bottom="0">
+		<s:Rect left="0" top="0" bottom="0" width="7">
+			<s:fill>
+				<s:SolidColor alpha="1" color="#ff0000"/>
+			</s:fill>
+		</s:Rect>
+		<s:Rect left="7" top="30" bottom="0" width="{titleDisplay.width+4}">
+			<s:fill>
+				<s:SolidColor alpha="1" color="#ff0000"/>
+			</s:fill>
+		</s:Rect>
+		<s:Rect left="{titleDisplay.width+11}" top="0" bottom="0" width="100%">
+			<s:fill>
+				<s:SolidColor alpha="1" color="#ff0000"/>
+			</s:fill>
+		</s:Rect>
+	</s:Group>
+	
+	<!-- border -->
+	<s:Rect id="border" left="0" right="0" top="10" bottom="0" mask="{borderGroupMask}" radiusX="4"
+			radiusY="4"><!--mask="{borderGroupMask}"-->
+		<s:stroke>
+			<s:SolidColorStroke id="borderStroke" weight="1"/>
+		</s:stroke>
+	</s:Rect>
+	
+	<!-- title -->
+	<s:Label id="titleDisplay" left="9" top="0" minHeight="20" maxDisplayedLines="1"
+			 textAlign="start" verticalAlign="middle"/>
+	
+	<!-- content -->
+	<s:Group id="contentGroup" left="5" right="5" top="21" bottom="5">
+		<s:layout>
+			<s:VerticalLayout/>
+		</s:layout>
+	</s:Group>
+</s:SparkSkin>

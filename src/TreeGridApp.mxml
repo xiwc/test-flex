@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600">
+	
+	<fx:Metadata>
+		[ResourceBundle("info")]
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			import comp.AppSyncChooseVmsWin;
+			
+			import mx.core.FlexGlobals;
+			import mx.managers.PopUpManager;
+			
+			protected function linkbutton1_clickHandler(event:MouseEvent):void
+			{
+				var appSyncChooseVmsWin:AppSyncChooseVmsWin = new AppSyncChooseVmsWin();
+				
+				PopUpManager.addPopUp(appSyncChooseVmsWin, FlexGlobals.topLevelApplication as DisplayObject, true);
+				PopUpManager.centerPopUp(appSyncChooseVmsWin);
+				PopUpManager.bringToFront(appSyncChooseVmsWin);
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<mx:LinkButton x="88" y="118" label="Ignore VM Snapshots for VMs"
+				   click="linkbutton1_clickHandler(event)" fontWeight="bold"/>
+</s:Application>

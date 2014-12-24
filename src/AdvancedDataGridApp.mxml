@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
-			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:comp="comp.*">
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:comp="comp.*"
+			   minWidth="955" minHeight="600"
+			   creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			[Bindable]
+			private var model:ArrayCollection = new ArrayCollection([
+				{isDefault:true, col1: '111', col2: '222', col3: '333'},
+				{col1: '111', col2: '222', col3: '333'},
+				{col1: '111', col2: '222', col3: '333'}
+			]);
+			
+		]]>
+	</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<mx:AdvancedDataGrid horizontalScrollPolicy="auto" id="adg1" x="123" y="60" width="505" height="309" designViewDataType="flat" allowMultipleSelection="true" selectionMode="multipleRows">
+	<fx:Metadata>
+		[ResourceBundle("info")]
+	</fx:Metadata>
+	<mx:AdvancedDataGrid id="adg1" x="123" y="60" width="505" rowCount="5"
+						 allowMultipleSelection="true" dataProvider="{model}"
+						 designViewDataType="flat" horizontalScrollPolicy="auto"
+						 selectionMode="multipleRows">
 		
 		<mx:itemRenderer>
 			<fx:Component>
@@ -14,20 +43,35 @@
 		</mx:itemRenderer>
 		
 		<mx:columns>
-			<mx:AdvancedDataGridColumn width="600" dataField="col1" headerText="Column 1"/>
+			<mx:AdvancedDataGridColumn width="20" draggable="false" resizable="false" dataField="isDefault" headerText="">
+				<mx:itemRenderer>
+					<fx:Component>
+						<mx:HBox horizontalAlign="center">
+							
+							<fx:Script>
+								<![CDATA[
+									import mx.resources.ResourceManager;
+									override public function set data(value:Object):void{
+										
+										super.data = value;
+										
+										if(data.hasOwnProperty('isDefault') && data.isDefault){
+											imgStatus.source = ResourceManager.getInstance().getClass('info', 'modified.icon');
+										}else{
+											imgStatus.source = "";
+										}
+									}
+								]]>
+							</fx:Script>
+							
+							<mx:Image id="imgStatus"/>
+						</mx:HBox>
+					</fx:Component>
+				</mx:itemRenderer>
+			</mx:AdvancedDataGridColumn>
+			<mx:AdvancedDataGridColumn dataField="col1['value']" headerText="Column 1"/>
 			<mx:AdvancedDataGridColumn dataField="col2" headerText="Column 2"/>
 			<mx:AdvancedDataGridColumn dataField="col3" headerText="Column 3"/>
 		</mx:columns>
-		<mx:dataProvider>
-			<s:ArrayCollection>
-				<fx:Object col1="ff1111111111111111111111111111111111111111111" col2="222" col3="333"/>
-				<fx:Object col1="111" col2="222" col3="333"/>
-				<fx:Object col1="111" col2="222" col3="333"/>
-				<fx:Object col1="111" col2="222" col3="333"/>
-				<fx:Object col1="111" col2="222" col3="333"/>
-				<fx:Object col1="111" col2="222" col3="333"/>
-				<fx:Object col1="111" col2="222" col3="333"/>
-			</s:ArrayCollection>
-		</mx:dataProvider>
 	</mx:AdvancedDataGrid>
 </s:Application>

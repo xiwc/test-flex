@@ -2,7 +2,7 @@
 <s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
 				   xmlns:s="library://ns.adobe.com/flex/spark"
 				   xmlns:mx="library://ns.adobe.com/flex/mx"
-				   height="25" borderVisible="true"
+				   height="25" borderVisible="true" cornerRadius="3"
 				   creationComplete="bordercontainer1_creationCompleteHandler(event)">
 	<s:layout>
 		<s:HorizontalLayout gap="1" paddingLeft="1" verticalAlign="middle"/>
@@ -13,8 +13,39 @@
 			import mx.events.FlexEvent;
 			import mx.managers.IFocusManagerComponent;
 			
-			public function getValue():String{
-				return txtHour.text + ":" + txtMin.text + ":" + txtSec.text + " " + txtAmPm.text;
+			public function getTime():Date{
+				
+				var time:Date = new Date();
+				
+				var hour:Number = parseInt(txtHour.text);
+				
+				if(txtAmPm.text.toLowerCase() == "am"){
+					time.hours = hour % 12;
+				}else{
+					time.hours = hour % 12 + 12;
+				}
+				time.minutes = parseInt(txtMin.text);
+				time.seconds = parseInt(txtSec.text);
+				
+				return time;
+			}
+			
+			public function setTime(time:Date):void{
+				
+				var format:String = formatter.format(time);
+				var split:Array = format.split(" ");
+				
+				// set hout min sec.
+				var hhmmss:String = split[0] as String;
+				var split2:Array = hhmmss.split(":");
+				
+				txtHour.text = split2[0];
+				txtMin.text = split2[1];
+				txtSec.text = split2[2];
+				
+				// set am or pm
+				var ampm:String = split[1] as String;
+				txtAmPm.text = ampm.toLowerCase();
 			}
 			
 			protected function txtHour_focusInHandler(event:FocusEvent):void
@@ -83,11 +114,6 @@
 				var txt:TextInput = event.currentTarget as TextInput;
 				
 				setHour(parseInt(txt.text));
-			}
-			
-			protected function spinner_changeHandler(event:Event):void
-			{
-				trace(event);
 			}
 			
 			protected function bordercontainer1_creationCompleteHandler(event:FlexEvent):void
@@ -189,7 +215,7 @@
 	</fx:Script>
 	
 	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:DateTimeFormatter id="formatter" dateTimePattern="hh:mm:ss a"/>
 	</fx:Declarations>
 	<s:TextInput id="txtHour" width="22" borderVisible="false" enter="txtHour_enterHandler(event)"
 				 focusIn="txtHour_focusInHandler(event)" focusOut="txtHour_focusOutHandler(event)"
@@ -205,5 +231,6 @@
 	<s:TextInput id="txtAmPm" width="25" borderVisible="false" click="txtAmPm_clickHandler(event)"
 				 color="gray" editable="false" maxChars="2" restrict="apm" selectable="false"
 				 text="am"/>
-	<s:Spinner id="spinner" change="spinner_changeHandler(event)" focusEnabled="false"/>
+	<s:Spacer width="1"/>
+	<s:Spinner id="spinner" focusEnabled="false"/>
 </s:BorderContainer>

@@ -10,7 +10,7 @@
 			
 			private var _param:Object;
 			
-			private var myPanel:MyPanel = new MyPanel();
+			private var myPanel:AppsyncResizablePanel = new AppsyncResizablePanel();
 			
 			public function get param():Object
 			{

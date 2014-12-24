@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600">
+	<s:layout>
+		<s:VerticalLayout gap="0"/>
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Group>
+		<s:layout>
+			<s:VerticalLayout/>
+		</s:layout>
+		
+		<mx:Grid width="100%" backgroundColor="#e0e0e0" borderColor="#e0e0e0" borderStyle="solid"
+				 borderVisible="true" horizontalGap="0" verticalGap="1">
+			<mx:GridRow width="100%">
+				<mx:GridItem width="195" backgroundColor="#e4eff6">
+					<mx:Label text="label:"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" backgroundColor="#ffffff">
+					<mx:Text text="value"/>
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%">
+				<mx:GridItem width="195" backgroundColor="#e4eff6">
+					<mx:Label text="label:"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" backgroundColor="#ffffff">
+					<mx:Text text="value"/>
+				</mx:GridItem>
+			</mx:GridRow>
+		</mx:Grid>
+		<mx:Grid width="100%" backgroundColor="#e0e0e0" borderColor="#e0e0e0" borderStyle="solid"
+				 borderVisible="true" horizontalGap="0" verticalGap="1">
+			<mx:GridRow width="100%">
+				<mx:GridItem width="195" backgroundColor="#e4eff6">
+					<mx:Label text="label:"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" backgroundColor="#ffffff">
+					<mx:Text text="value"/>
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%">
+				<mx:GridItem width="195" backgroundColor="#e4eff6">
+					<mx:Label text="label:"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" backgroundColor="#ffffff">
+					<mx:Text text="value"/>
+				</mx:GridItem>
+			</mx:GridRow>
+		</mx:Grid>
+		
+		
+	</s:Group>
+</s:Application>

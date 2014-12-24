@@ -34,6 +34,16 @@
     <application path="TimeInputApp.mxml"/>
     <application path="DateApp.mxml"/>
     <application path="LazyApp.mxml"/>
+    <application path="DateTimeFormatterApp.mxml"/>
+    <application path="EmbeddedMsgApp.mxml"/>
+    <application path="GridApp.mxml"/>
+    <application path="LabelTestApp.mxml"/>
+    <application path="LayoutApp.mxml"/>
+    <application path="MergeObjectAPp.mxml"/>
+    <application path="NumberTextInputApp.mxml"/>
+    <application path="TApp.mxml"/>
+    <application path="TitleGroupApp.mxml"/>
+    <application path="TreeGridApp.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
