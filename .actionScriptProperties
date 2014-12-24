@@ -33,6 +33,7 @@
     <application path="NumericStepperApp.mxml"/>
     <application path="TimeInputApp.mxml"/>
     <application path="DateApp.mxml"/>
+    <application path="LazyApp.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>

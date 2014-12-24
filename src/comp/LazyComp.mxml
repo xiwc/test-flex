@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  width="400" height="300">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			
+			public function init():void{
+				
+				tabNav.visible = true;
+				
+				p0.visible = true;
+				p1.visible = true;
+				p2.visible = true;
+				p5.visible = true;
+			}
+		]]>
+	</fx:Script>
+	<s:Panel id="p0" title="P0">
+		
+	</s:Panel>
+	<mx:Panel id="p6" title="P6">
+		
+	</mx:Panel>
+	
+	<mx:TabNavigator id="tabNav" creationPolicy="all">
+		<s:NavigatorContent label="P1" creationPolicy="auto">
+			<s:TileGroup>
+				<s:Panel id="p1" title="P1">
+					<s:Panel id="p5">
+						
+					</s:Panel>
+				</s:Panel>
+				<s:Panel title="P3">
+					
+				</s:Panel>
+				<s:Panel title="P4">
+					
+				</s:Panel>
+			</s:TileGroup>
+		</s:NavigatorContent>
+		<s:NavigatorContent label="P2" creationPolicy="auto">
+			<s:Panel id="p2" title="P2">
+				
+			</s:Panel>
+		</s:NavigatorContent>
+	</mx:TabNavigator>
+</s:VGroup>

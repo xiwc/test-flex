@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600"
+			   creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import comp.LazyComp;
+			
+			import mx.events.FlexEvent;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var lazyComp:LazyComp = new LazyComp();
+				
+				lazyComp.p0.visible = true;
+				lazyComp.p6.visible = true;
+				lazyComp.tabNav.visible = true;
+				
+				pp.addElement(lazyComp);
+				// OR
+				pp.addChild(lazyComp);
+				
+				lazyComp.p1.visible = true;
+				lazyComp.p2.visible = true;
+				lazyComp.p5.visible = true;
+				
+				lazyComp.init();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:Panel id="p" width="100%" height="100%" title="P">
+		
+	</s:Panel>
+	<mx:Panel id="pp" width="100%" height="100%" title="PP">
+		
+	</mx:Panel>
+</s:Application>
